@@ -5,64 +5,64 @@ import java.util.Scanner;
 public class Main {
 
     public static void main(String[] args) {
-
-        System.out.println("Congratulations!! You're running Lotus's Task List Program.");
-        taskselection();
         Scanner keyboard = new Scanner(System.in);
-        String userInput = keyboard.nextLine();
+        ArrayList<String> currentListOfTasks = new ArrayList<String>();
+        System.out.println("Congratulations!! You're running Lotus's Task List Program.");
+        String userInput = "";
 
         while (!userInput.equals("q")) {
+            System.out.println("What would you like to do?");
+            System.out.println("1. List All Tasks.");
+            System.out.println("2. Add a task to the list.");
+            System.out.println("3. Delete a task from the list?");
+            System.out.println("q. To quit the program");
+            userInput = keyboard.nextLine();
             if (userInput.equals("1")) {
-                selection1();
-                taskselection();
-                continue;
+                listAllTasks(currentListOfTasks);
             } else if (userInput.equals("2")) {
-                selection2();
-                taskselection();
-                continue;
+                addNewTask(currentListOfTasks);
             } else if (userInput.equals("3")) {
-                selection3();
-                taskselection();
-                continue;
+                deleteTask(currentListOfTasks);
             }
-            break;
         }
     }
 
-    public static void taskselection(){
-        ArrayList<String> taskList = new ArrayList<String>();
-        taskList.add("What would you like to do?");
-        taskList.add("1. List All Tasks.");
-        taskList.add("2. Add a task to the list.");
-        taskList.add("3. Delete a task.");
-        taskList.add("q. To quit the program.");
-        for (String commands : taskList) {
-            System.out.println(commands);
+        public static void listAllTasks (ArrayList < String > currentListOfTasks) {
+            if (currentListOfTasks.size() == 0) {
+                System.out.println("No Tasks in List to Display!\n");
+            } else {
+                System.out.println("* Current List of Tasks *");
+                int taskNumber = 0;
+                for (String myTask : currentListOfTasks) {
+                    System.out.println(taskNumber + ". " + myTask);
+                    taskNumber++;
+                }
+                System.out.println("\n");
+            }
         }
-        Scanner keyboard = new Scanner(System.in);
-        String userInput = keyboard.nextLine();
-    }
 
-    public static void selection1() {
-        ArrayList<String> newTasklist = new ArrayList<String>();
-        System.out.println(newTasklist);
-    }
+        public static void addNewTask(ArrayList<String> currentListOfTasks) {
+            Scanner keyboardGetNewTask = new Scanner(System.in);
+            System.out.println("What would you like to add?");
+            String newTask = keyboardGetNewTask.nextLine();
+            currentListOfTasks.add(newTask);
+            System.out.println("New Task Added!\n");
+            listAllTasks(currentListOfTasks);
+        }
 
-    public static void selection2() {
-        Scanner keyboard = new Scanner(System.in);
-        System.out.println("What would you like to add?");
-        String userInput = keyboard.nextLine();
-        System.out.println(keyboard.nextLine());
-        ArrayList<String> newTasklist = new ArrayList<String>();
-        newTasklist.add(userInput);
-    }
+        public static void deleteTask(ArrayList<String> currentListOfTasks) {
+            if (currentListOfTasks.size() == 0) {
+                System.out.println("No Tasks in list to Delete!\n");
+                return;
+            }
 
-    public static void selection3(){
-        System.out.println("What would you like to remove?");
-        Scanner keyboard = new Scanner(System.in);
-        String userInput = keyboard.nextLine();
-        System.out.println(keyboard.nextLine());
-        ArrayList<String> newTasklist = new ArrayList<String>();
-        newTasklist.remove(userInput);
-    }
+            listAllTasks(currentListOfTasks);
+            System.out.print("Enter Index Number of Task to Remove: ");
+            Scanner keyboardGetTaskToDelete = new Scanner(System.in);
+            int deleteTaskNmber = keyboardGetTaskToDelete.nextInt();
+            currentListOfTasks.remove(deleteTaskNmber);
+            System.out.println("Task Deleted!\n");
+            listAllTasks(currentListOfTasks);
+        }
+
 }
