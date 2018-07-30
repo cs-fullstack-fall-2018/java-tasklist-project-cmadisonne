@@ -37,7 +37,7 @@ public class Main {
                 listAllTasks(arrayOfTasks);
             } else if (userInput.equals("2")) { // Call the add new task method with the current list of tasks
                 addNewTask(arrayOfTasks);
-            } else if (userInput.equals("3")) {
+            } else if (userInput.equals("3")) { // Call the delete task method with the current list of tasks
                 deleteTask(arrayOfTasks);
             }
         }
