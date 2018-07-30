@@ -14,12 +14,15 @@ public class Main {
         while (!userInput.equals("q")) {
             if (userInput.equals("1")) {
                 selection1();
+                taskselection();
                 continue;
             } else if (userInput.equals("2")) {
                 selection2();
+                taskselection();
                 continue;
             } else if (userInput.equals("3")) {
                 selection3();
+                taskselection();
                 continue;
             }
             break;
@@ -33,7 +36,6 @@ public class Main {
         taskList.add("2. Add a task to the list.");
         taskList.add("3. Delete a task.");
         taskList.add("q. To quit the program.");
-
         for (String commands : taskList) {
             System.out.println(commands);
         }
@@ -44,16 +46,6 @@ public class Main {
     public static void selection1() {
         ArrayList<String> newTasklist = new ArrayList<String>();
         System.out.println(newTasklist);
-        ArrayList<String> taskList = new ArrayList<String>();
-        taskList.add("What would you like to do?");
-        taskList.add("1. List All Tasks.");
-        taskList.add("2. Add a task to the list.");
-        taskList.add("3. Delete a task.");
-        taskList.add("q. To quit the program.");
-        for (String commands : taskList) {
-            System.out.println(commands);
-        }
-
     }
 
     public static void selection2() {
@@ -63,17 +55,6 @@ public class Main {
         System.out.println(keyboard.nextLine());
         ArrayList<String> newTasklist = new ArrayList<String>();
         newTasklist.add(userInput);
-        ArrayList<String> taskList = new ArrayList<String>();
-        taskList.add("What would you like to do?");
-        taskList.add("1. List All Tasks.");
-        taskList.add("2. Add a task to the list.");
-        taskList.add("3. Delete a task.");
-        taskList.add("q. To quit the program.");
-        for (String commands : taskList) {
-            System.out.println(commands);
-
-        }
-
     }
 
     public static void selection3(){
@@ -83,14 +64,5 @@ public class Main {
         System.out.println(keyboard.nextLine());
         ArrayList<String> newTasklist = new ArrayList<String>();
         newTasklist.remove(userInput);
-        ArrayList<String> taskList = new ArrayList<String>();
-        taskList.add("What would you like to do?");
-        taskList.add("1. List All Tasks.");
-        taskList.add("2. Add a task to the list.");
-        taskList.add("3. Delete a task.");
-        taskList.add("q. To quit the program.");
-        for (String commands : taskList) {
-            System.out.println(commands);}
-
     }
 }
